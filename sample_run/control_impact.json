@@ -1,0 +1,98 @@
+[
+  {
+    "type": "title_withdrawn",
+    "title_id": "T0001",
+    "at": "2026-10-01T07:00:00.000Z",
+    "pages_replaced": [
+      {
+        "old": "A-000132",
+        "new": "A-000225"
+      },
+      {
+        "old": "A-000135",
+        "new": "A-000226"
+      },
+      {
+        "old": "A-000161",
+        "new": "A-000227"
+      },
+      {
+        "old": "A-000175",
+        "new": "A-000228"
+      },
+      {
+        "old": "A-000195",
+        "new": "A-000229"
+      },
+      {
+        "old": "A-000199",
+        "new": "A-000230"
+      },
+      {
+        "old": "A-000200",
+        "new": "A-000231"
+      },
+      {
+        "old": "A-000214",
+        "new": "A-000232"
+      },
+      {
+        "old": "A-000216",
+        "new": "A-000233"
+      }
+    ],
+    "pages_superseded": [],
+    "pages_expired": [
+      "A-000008",
+      "A-000012",
+      "A-000016",
+      "A-000035",
+      "A-000038",
+      "A-000039",
+      "A-000066",
+      "A-000071",
+      "A-000075",
+      "A-000097",
+      "A-000108"
+    ],
+    "messages_cancelled": [],
+    "viewers": [
+      "U-00781",
+      "U-00917",
+      "U-01487",
+      "U-02044",
+      "U-02535",
+      "U-03645",
+      "U-04429",
+      "U-04814",
+      "U-04907"
+    ],
+    "viewers_affected": 9
+  },
+  {
+    "type": "goal_rule_corrected",
+    "goal_id": "G03",
+    "at": "2026-10-01T08:30:00.000Z",
+    "new_version": "G03@2026-10-01T08:30:00.000Z",
+    "applies_to_open_goals": true,
+    "needs_human_review": false,
+    "open_goals_affected": 0,
+    "viewers_affected": [],
+    "other_goals_touched": 0,
+    "note": "only G03 goals whose window was running at the correction were re-pointed to the corrected rule; no other viewer or decision was reprocessed"
+  },
+  {
+    "type": "dependency_unavailable",
+    "dependency": "model_provider",
+    "at": "2026-10-01T10:35:00.000Z",
+    "until": "2026-10-01T10:42:00.000Z",
+    "handled_by": "harness fault injection"
+  },
+  {
+    "type": "dependency_degraded",
+    "dependency": "user_data_store",
+    "at": "2026-10-01T13:10:00.000Z",
+    "until": "2026-10-01T13:17:00.000Z",
+    "handled_by": "harness fault injection"
+  }
+]

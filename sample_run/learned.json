@@ -1,0 +1,381 @@
+{
+ "baseline_table": {
+  "G01": {
+   "p": 0.3184,
+   "n": 148,
+   "source": "history anchors before the replay day, n=767; updated with 48 holdout goals (prior capped at 100)",
+   "buckets": {}
+  },
+  "G02": {
+   "p": 0.1889,
+   "n": 120,
+   "source": "pilot holdout arm (no agent), n=183; updated with 20 holdout goals (prior capped at 100)",
+   "buckets": {}
+  },
+  "G03": {
+   "p": 0.1284,
+   "n": 670,
+   "source": "history anchors before the replay day, n=670",
+   "buckets": {
+    "app_open": {
+     "p": 0.303,
+     "n": 670
+    },
+    "play_started": {
+     "p": 0.1284,
+     "n": 670
+    }
+   }
+  },
+  "G04": {
+   "p": 0.2239,
+   "n": 67,
+   "source": "pilot holdout arm (no agent), n=66; updated with 1 holdout goals (prior capped at 100)",
+   "buckets": {}
+  },
+  "G05": {
+   "p": 0.032,
+   "n": 205,
+   "source": "pilot holdout arm (no agent), n=1073; updated with 105 holdout goals (prior capped at 100)",
+   "buckets": {}
+  },
+  "G06": {
+   "p": 0.0355,
+   "n": 109,
+   "source": "pilot holdout arm (no agent), n=174; updated with 9 holdout goals (prior capped at 100)",
+   "buckets": {}
+  },
+  "G07": {
+   "p": 0.0926,
+   "n": 461,
+   "source": "history anchors before the replay day, n=11530; updated with 361 holdout goals (prior capped at 100)",
+   "buckets": {
+    "ep1/14d+": {
+     "p": 0.0703,
+     "n": 95
+    },
+    "ep1/3-6d": {
+     "p": 0.1029,
+     "n": 78
+    },
+    "ep1/7-13d": {
+     "p": 0.0443,
+     "n": 81
+    },
+    "ep2+/14d+": {
+     "p": 0.1897,
+     "n": 30
+    },
+    "ep2+/3-6d": {
+     "p": 0.1253,
+     "n": 126
+    },
+    "ep2+/7-13d": {
+     "p": 0.1727,
+     "n": 71
+    }
+   }
+  },
+  "G08": {
+   "p": 0.1448,
+   "n": 146,
+   "source": "history anchors before the replay day, n=7942; updated with 46 holdout goals (prior capped at 100)",
+   "buckets": {
+    "play_days_0-1": {
+     "p": 0.0714,
+     "n": 22
+    },
+    "play_days_2-4": {
+     "p": 0.182,
+     "n": 56
+    },
+    "play_days_5+": {
+     "p": 0.1853,
+     "n": 28
+    }
+   }
+  },
+  "G09": {
+   "p": 0.5403,
+   "n": 156,
+   "source": "pilot holdout arm (no agent), n=483; updated with 56 holdout goals (prior capped at 100)",
+   "buckets": {}
+  },
+  "G12": {
+   "p": 0.4912,
+   "n": 153,
+   "source": "history anchors before the replay day, n=193; updated with 53 holdout goals (prior capped at 100)",
+   "buckets": {}
+  }
+ },
+ "baseline_changes": {
+  "G07": {
+   "before": 0.2667,
+   "after": 0.0926,
+   "holdout_observed": 0.0443,
+   "n": 361
+  },
+  "G02": {
+   "before": 0.1967,
+   "after": 0.1889,
+   "holdout_observed": 0.15,
+   "n": 20
+  },
+  "G12": {
+   "before": 0.4715,
+   "after": 0.4912,
+   "holdout_observed": 0.5283,
+   "n": 53
+  },
+  "G08": {
+   "before": 0.1014,
+   "after": 0.1448,
+   "holdout_observed": 0.2391,
+   "n": 46
+  },
+  "G06": {
+   "before": 0.0287,
+   "after": 0.0355,
+   "holdout_observed": 0.1111,
+   "n": 9
+  },
+  "G09": {
+   "before": 0.6729,
+   "after": 0.5403,
+   "holdout_observed": 0.3036,
+   "n": 56
+  },
+  "G01": {
+   "before": 0.3312,
+   "after": 0.3184,
+   "holdout_observed": 0.2917,
+   "n": 48
+  },
+  "G04": {
+   "before": 0.2273,
+   "after": 0.2239,
+   "holdout_observed": 0.0,
+   "n": 1
+  },
+  "G05": {
+   "before": 0.0056,
+   "after": 0.032,
+   "holdout_observed": 0.0571,
+   "n": 105
+  }
+ },
+ "goal_lift": {
+  "G01": {
+   "agent": 0.4182,
+   "holdout": 0.2917,
+   "diff": 0.1265,
+   "upper95": 0.3096,
+   "n_agent": 55,
+   "n_holdout": 48
+  },
+  "G02": {
+   "agent": 0.2381,
+   "holdout": 0.15,
+   "diff": 0.0881,
+   "upper95": 0.3283,
+   "n_agent": 21,
+   "n_holdout": 20
+  },
+  "G04": {
+   "agent": 0.0,
+   "holdout": 0.0,
+   "diff": 0.0,
+   "upper95": 0.0,
+   "n_agent": 1,
+   "n_holdout": 1
+  },
+  "G06": {
+   "agent": 0.0,
+   "holdout": 0.1111,
+   "diff": -0.1111,
+   "upper95": 0.0942,
+   "n_agent": 8,
+   "n_holdout": 9
+  },
+  "G07": {
+   "agent": 0.0329,
+   "holdout": 0.0443,
+   "diff": -0.0114,
+   "upper95": 0.0166,
+   "n_agent": 365,
+   "n_holdout": 361
+  },
+  "G08": {
+   "agent": 0.3235,
+   "holdout": 0.2391,
+   "diff": 0.0844,
+   "upper95": 0.2842,
+   "n_agent": 34,
+   "n_holdout": 46
+  },
+  "G09": {
+   "agent": 0.3433,
+   "holdout": 0.3036,
+   "diff": 0.0397,
+   "upper95": 0.2053,
+   "n_agent": 67,
+   "n_holdout": 56
+  },
+  "G12": {
+   "agent": 0.5897,
+   "holdout": 0.5283,
+   "diff": 0.0614,
+   "upper95": 0.2661,
+   "n_agent": 39,
+   "n_holdout": 53
+  }
+ },
+ "goal_multipliers": {
+  "G07": {
+   "multiplier": 0.5,
+   "why": "pursued for 365/361 viewers; measured lift -1.1 pp, 95% upper bound +1.7 pp < 3 pp: the interventions do not move this goal"
+  }
+ },
+ "out_of_sample": {
+  "n_test": 699,
+  "split": "by viewer (sha256 of viewer id), two folds",
+  "brier": {
+   "prior": 0.1574,
+   "learned": 0.1108,
+   "constant": 0.1186
+  },
+  "by_goal": {
+   "G01": {
+    "n": 48,
+    "observed": 0.2917,
+    "mean_p": {
+     "prior": 0.3312,
+     "learned": 0.3237,
+     "constant": 0.137
+    },
+    "brier": {
+     "prior": 0.2082,
+     "learned": 0.2077,
+     "constant": 0.2304
+    }
+   },
+   "G02": {
+    "n": 20,
+    "observed": 0.15,
+    "mean_p": {
+     "prior": 0.1967,
+     "learned": 0.1925,
+     "constant": 0.1373
+    },
+    "brier": {
+     "prior": 0.1297,
+     "learned": 0.1298,
+     "constant": 0.1284
+    }
+   },
+   "G04": {
+    "n": 1,
+    "observed": 0.0,
+    "mean_p": {
+     "prior": 0.2273,
+     "learned": 0.2273,
+     "constant": 0.1441
+    },
+    "brier": {
+     "prior": 0.0517,
+     "learned": 0.0517,
+     "constant": 0.0208
+    }
+   },
+   "G05": {
+    "n": 105,
+    "observed": 0.0571,
+    "mean_p": {
+     "prior": 0.0056,
+     "learned": 0.0228,
+     "constant": 0.1371
+    },
+    "brier": {
+     "prior": 0.0565,
+     "learned": 0.0562,
+     "constant": 0.0608
+    }
+   },
+   "G06": {
+    "n": 9,
+    "observed": 0.1111,
+    "mean_p": {
+     "prior": 0.0287,
+     "learned": 0.0317,
+     "constant": 0.138
+    },
+    "brier": {
+     "prior": 0.1056,
+     "learned": 0.106,
+     "constant": 0.0982
+    }
+   },
+   "G07": {
+    "n": 361,
+    "observed": 0.0443,
+    "mean_p": {
+     "prior": 0.3146,
+     "learned": 0.1389,
+     "constant": 0.1371
+    },
+    "brier": {
+     "prior": 0.1343,
+     "learned": 0.0527,
+     "constant": 0.051
+    }
+   },
+   "G08": {
+    "n": 46,
+    "observed": 0.2391,
+    "mean_p": {
+     "prior": 0.1081,
+     "learned": 0.1371,
+     "constant": 0.1387
+    },
+    "brier": {
+     "prior": 0.1985,
+     "learned": 0.196,
+     "constant": 0.1913
+    }
+   },
+   "G09": {
+    "n": 56,
+    "observed": 0.3036,
+    "mean_p": {
+     "prior": 0.6729,
+     "learned": 0.5921,
+     "constant": 0.1373
+    },
+    "brier": {
+     "prior": 0.3478,
+     "learned": 0.2961,
+     "constant": 0.2399
+    }
+   },
+   "G12": {
+    "n": 53,
+    "observed": 0.5283,
+    "mean_p": {
+     "prior": 0.4715,
+     "learned": 0.483,
+     "constant": 0.1364
+    },
+    "brier": {
+     "prior": 0.2524,
+     "learned": 0.2513,
+     "constant": 0.4029
+    }
+   }
+  }
+ },
+ "rules": {
+  "prior_cap": 100,
+  "min_n_per_arm": 100,
+  "min_lift": 0.03
+ }
+}

@@ -1,0 +1,83 @@
+{
+  "_comment": "Every threshold the agent uses lives here so it can be reviewed and changed without code edits. See ARCHITECTURE.md for the reasoning behind each value.",
+  "budgets": {
+    "max_model_calls": 8,
+    "max_tool_calls": 20
+  },
+  "latency": {
+    "publish_slo_ms": 60000,
+    "hard_fail_ms": 300000,
+    "page_target_ms": 2500,
+    "store_timeout_ms": 1000,
+    "model_timeout_ms": 1500,
+    "workers": 4,
+    "shed_model_when_queue_ms": 500,
+    "fixed_compute_ms": null
+  },
+  "freshness": {
+    "stale_trigger_s": 600,
+    "profile_max_age_h": 48,
+    "title_expiry_margin_min": 120
+  },
+  "history": {
+    "coverage_start": "2026-08-31T18:30:00Z",
+    "popularity_days": 14
+  },
+  "goals": {
+    "not_actionable_factor": 0.5,
+    "recent_lapse_days": 30,
+    "resume_min_idle_days": 3,
+    "absence_days": 14,
+    "habit_lookback_days": 14,
+    "new_release_days": 30,
+    "value": {
+      "G04": 1.0,
+      "G05": 1.0,
+      "G06": 1.0,
+      "G08": 0.6,
+      "G09": 0.6,
+      "G01": 0.5,
+      "G02": 0.5,
+      "G03": 0.5,
+      "G07": 0.5,
+      "G12": 0.5,
+      "G10": 0.0,
+      "G11": 0.0
+    },
+    "_why_value": "product value of reaching each goal: paid conversion 1.0; keeping a payer engaged 0.6; activation and re-engagement 0.5. Unmeasurable goals 0. A product owner should own these numbers.",
+    "min_expected_value": 0.1,
+    "_why_min_expected_value": "below this the best goal is not worth an intervention (e.g. first paid plan only: value 1.0 x movability 0.02 = 0.02): the agent records it and leaves the default page",
+    "_why_scoring": "score = value x 4p(1-p) x (0.5 if not actionable), p = organic baseline (baseline.py). The old paywall-intent bonus was removed: in the history, paywall viewers converted less (1.6%) than others (2.3%)."
+  },
+  "model": {
+    "provider": "mock",
+    "circuit_breaker_failures": 3,
+    "circuit_breaker_cooldown_s": 120,
+    "mode": "log_only",
+    "_why": "log_only: consulted on every new goal choice that has a real alternative, off the critical path; answers are validated and recorded but never followed. advise: follow validated answers (latency on the page path, shed under load). History: the call rule was first \"within 0.2\", widened to 0.5 after no injected faults fired (tuning toward the test), then replaced by log_only."
+  },
+  "messaging": {
+    "enabled": true,
+    "followup_delay_h": 3,
+    "latest_send_hour_ist": 21,
+    "earliest_send_hour_ist": 9,
+    "blast_radius_max_per_hour": 120,
+    "max_active_days_14d_for_followup": 3,
+    "_why": "a follow-up message is only sent to viewers who are not already habitual (app open on at most 3 of the last 14 days); habitual viewers will see the page on their own",
+    "morning_spread_min": 120,
+    "blast_radius_share_per_hour": 0.25,
+    "_why_blast": "runaway guard: messages whose send_at falls within one hour may not exceed max(blast_radius_max_per_hour, share x distinct viewers reached in the last 24 h); next-morning follow-ups are spread over morning_spread_min",
+    "min_score_for_followup": 0.2,
+    "followup_share": 0.5,
+    "_why_followup": "a follow-up is considered only for goals scoring >= 0.2; then each eligible viewer is assigned send or withhold at random (share 0.5, stable per viewer) so the message effect can be measured"
+  },
+  "home_page": {
+    "rows": 5,
+    "titles_per_row": 10,
+    "genre_rows": 2
+  },
+  "baseline": {
+    "table": null,
+    "_why": "null: fit the organic baseline from the pack (pilot holdout + history). A path: load a saved table instead, e.g. day 1's table updated with day 1's holdout outcomes (oua learn)."
+  }
+}

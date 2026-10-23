@@ -1,0 +1,392 @@
+{
+  "definition": "decided_in_ms = published_at - deliver_at = queue wait + simulated dependency latency + measured compute. Includes duplicates and no-action decisions (they are decisions too).",
+  "slo": {
+    "publish_within_ms": 60000,
+    "hard_fail_ms": 300000,
+    "page_useful_within_ms": 3000,
+    "why_page_target": "the simulator shows a personalised page only if it is live when the viewer reaches home, 3-40 s after opening the app"
+  },
+  "workers": 4,
+  "all_trigger_decisions": {
+    "n": 2769,
+    "p50_ms": 69,
+    "p95_ms": 105,
+    "p99_ms": 116,
+    "max_ms": 1975,
+    "over_60s": 0,
+    "over_5min": 0
+  },
+  "home_page_decisions": {
+    "n": 759,
+    "p50_ms": 76,
+    "p95_ms": 106,
+    "p99_ms": 117,
+    "max_ms": 1975,
+    "over_60s": 0,
+    "over_5min": 0,
+    "published_within_3s": 759
+  },
+  "by_status": {
+    "DUPLICATE_IGNORED": {
+      "n": 90,
+      "p50_ms": 0,
+      "p95_ms": 0,
+      "p99_ms": 0,
+      "max_ms": 0,
+      "over_60s": 0,
+      "over_5min": 0
+    },
+    "NO_ACTION": {
+      "n": 828,
+      "p50_ms": 0,
+      "p95_ms": 97,
+      "p99_ms": 111,
+      "max_ms": 1001,
+      "over_60s": 0,
+      "over_5min": 0
+    },
+    "PUBLISHED": {
+      "n": 756,
+      "p50_ms": 76,
+      "p95_ms": 106,
+      "p99_ms": 115,
+      "max_ms": 641,
+      "over_60s": 0,
+      "over_5min": 0
+    },
+    "PUBLISHED_FALLBACK": {
+      "n": 3,
+      "p50_ms": 1315,
+      "p95_ms": 1975,
+      "p99_ms": 1975,
+      "max_ms": 1975,
+      "over_60s": 0,
+      "over_5min": 0
+    },
+    "SHADOW_NO_ACTION": {
+      "n": 1092,
+      "p50_ms": 75,
+      "p95_ms": 108,
+      "p99_ms": 117,
+      "max_ms": 1805,
+      "over_60s": 0,
+      "over_5min": 0
+    }
+  },
+  "by_hour_ist": {
+    "00": {
+      "n": 29,
+      "p50_ms": 77,
+      "p95_ms": 112,
+      "p99_ms": 115,
+      "max_ms": 115,
+      "over_60s": 0,
+      "over_5min": 0
+    },
+    "01": {
+      "n": 8,
+      "p50_ms": 83,
+      "p95_ms": 117,
+      "p99_ms": 117,
+      "max_ms": 117,
+      "over_60s": 0,
+      "over_5min": 0
+    },
+    "02": {
+      "n": 11,
+      "p50_ms": 77,
+      "p95_ms": 108,
+      "p99_ms": 108,
+      "max_ms": 108,
+      "over_60s": 0,
+      "over_5min": 0
+    },
+    "03": {
+      "n": 10,
+      "p50_ms": 82,
+      "p95_ms": 100,
+      "p99_ms": 100,
+      "max_ms": 100,
+      "over_60s": 0,
+      "over_5min": 0
+    },
+    "04": {
+      "n": 6,
+      "p50_ms": 60,
+      "p95_ms": 102,
+      "p99_ms": 102,
+      "max_ms": 102,
+      "over_60s": 0,
+      "over_5min": 0
+    },
+    "05": {
+      "n": 17,
+      "p50_ms": 68,
+      "p95_ms": 110,
+      "p99_ms": 110,
+      "max_ms": 110,
+      "over_60s": 0,
+      "over_5min": 0
+    },
+    "06": {
+      "n": 25,
+      "p50_ms": 84,
+      "p95_ms": 100,
+      "p99_ms": 109,
+      "max_ms": 109,
+      "over_60s": 0,
+      "over_5min": 0
+    },
+    "07": {
+      "n": 55,
+      "p50_ms": 66,
+      "p95_ms": 110,
+      "p99_ms": 110,
+      "max_ms": 110,
+      "over_60s": 0,
+      "over_5min": 0
+    },
+    "08": {
+      "n": 87,
+      "p50_ms": 70,
+      "p95_ms": 108,
+      "p99_ms": 113,
+      "max_ms": 113,
+      "over_60s": 0,
+      "over_5min": 0
+    },
+    "09": {
+      "n": 84,
+      "p50_ms": 73,
+      "p95_ms": 106,
+      "p99_ms": 119,
+      "max_ms": 119,
+      "over_60s": 0,
+      "over_5min": 0
+    },
+    "10": {
+      "n": 342,
+      "p50_ms": 0,
+      "p95_ms": 95,
+      "p99_ms": 113,
+      "max_ms": 120,
+      "over_60s": 0,
+      "over_5min": 0
+    },
+    "11": {
+      "n": 126,
+      "p50_ms": 72,
+      "p95_ms": 108,
+      "p99_ms": 114,
+      "max_ms": 116,
+      "over_60s": 0,
+      "over_5min": 0
+    },
+    "12": {
+      "n": 123,
+      "p50_ms": 71,
+      "p95_ms": 108,
+      "p99_ms": 117,
+      "max_ms": 117,
+      "over_60s": 0,
+      "over_5min": 0
+    },
+    "13": {
+      "n": 143,
+      "p50_ms": 68,
+      "p95_ms": 98,
+      "p99_ms": 106,
+      "max_ms": 110,
+      "over_60s": 0,
+      "over_5min": 0
+    },
+    "14": {
+      "n": 134,
+      "p50_ms": 68,
+      "p95_ms": 101,
+      "p99_ms": 109,
+      "max_ms": 113,
+      "over_60s": 0,
+      "over_5min": 0
+    },
+    "15": {
+      "n": 104,
+      "p50_ms": 70,
+      "p95_ms": 100,
+      "p99_ms": 104,
+      "max_ms": 113,
+      "over_60s": 0,
+      "over_5min": 0
+    },
+    "16": {
+      "n": 120,
+      "p50_ms": 75,
+      "p95_ms": 101,
+      "p99_ms": 107,
+      "max_ms": 112,
+      "over_60s": 0,
+      "over_5min": 0
+    },
+    "17": {
+      "n": 148,
+      "p50_ms": 73,
+      "p95_ms": 105,
+      "p99_ms": 115,
+      "max_ms": 116,
+      "over_60s": 0,
+      "over_5min": 0
+    },
+    "18": {
+      "n": 133,
+      "p50_ms": 74,
+      "p95_ms": 1001,
+      "p99_ms": 1805,
+      "max_ms": 1975,
+      "over_60s": 0,
+      "over_5min": 0
+    },
+    "19": {
+      "n": 215,
+      "p50_ms": 70,
+      "p95_ms": 103,
+      "p99_ms": 111,
+      "max_ms": 116,
+      "over_60s": 0,
+      "over_5min": 0
+    },
+    "20": {
+      "n": 351,
+      "p50_ms": 71,
+      "p95_ms": 104,
+      "p99_ms": 113,
+      "max_ms": 171,
+      "over_60s": 0,
+      "over_5min": 0
+    },
+    "21": {
+      "n": 203,
+      "p50_ms": 71,
+      "p95_ms": 106,
+      "p99_ms": 111,
+      "max_ms": 115,
+      "over_60s": 0,
+      "over_5min": 0
+    },
+    "22": {
+      "n": 196,
+      "p50_ms": 75,
+      "p95_ms": 104,
+      "p99_ms": 111,
+      "max_ms": 115,
+      "over_60s": 0,
+      "over_5min": 0
+    },
+    "23": {
+      "n": 99,
+      "p50_ms": 73,
+      "p95_ms": 108,
+      "p99_ms": 113,
+      "max_ms": 113,
+      "over_60s": 0,
+      "over_5min": 0
+    }
+  },
+  "windows": {
+    "dependency_unavailable model_provider (10:35-10:42 UTC)": {
+      "n": 22,
+      "p50_ms": 77,
+      "p95_ms": 99,
+      "p99_ms": 105,
+      "max_ms": 105,
+      "over_60s": 0,
+      "over_5min": 0,
+      "statuses": {
+        "PUBLISHED": 9,
+        "SHADOW_NO_ACTION": 9,
+        "NO_ACTION": 3,
+        "DUPLICATE_IGNORED": 1
+      },
+      "model_outcomes": {
+        "error_unavailable": 6,
+        "not_called_holdout_shadow": 7,
+        "None": 6,
+        "skipped_circuit_open": 3
+      },
+      "degraded_decisions": 0
+    },
+    "dependency_degraded user_data_store (13:10-13:17 UTC)": {
+      "n": 16,
+      "p50_ms": 1001,
+      "p95_ms": 1975,
+      "p99_ms": 1975,
+      "max_ms": 1975,
+      "over_60s": 0,
+      "over_5min": 0,
+      "statuses": {
+        "SHADOW_NO_ACTION": 9,
+        "PUBLISHED": 1,
+        "PUBLISHED_FALLBACK": 3,
+        "NO_ACTION": 3
+      },
+      "model_outcomes": {
+        "None": 15,
+        "accepted": 1
+      },
+      "degraded_decisions": 13
+    },
+    "busiest 10 minutes, all triggers (10:08-10:18 IST)": {
+      "n": 242,
+      "p50_ms": 0,
+      "p95_ms": 56,
+      "p99_ms": 82,
+      "max_ms": 111,
+      "over_60s": 0,
+      "over_5min": 0,
+      "traffic_vs_daily_average": 12.6,
+      "max_queue_ms": 0,
+      "statuses": {
+        "NO_ACTION": 223,
+        "PUBLISHED": 7,
+        "SHADOW_NO_ACTION": 9,
+        "DUPLICATE_IGNORED": 3
+      }
+    },
+    "busiest 10 minutes, fresh triggers only (20:29-20:39 IST)": {
+      "n": 163,
+      "p50_ms": 74,
+      "p95_ms": 106,
+      "p99_ms": 117,
+      "max_ms": 171,
+      "over_60s": 0,
+      "over_5min": 0,
+      "traffic_vs_daily_average": 10.0,
+      "max_queue_ms": 0,
+      "statuses": {
+        "SHADOW_NO_ACTION": 89,
+        "NO_ACTION": 27,
+        "PUBLISHED": 45,
+        "DUPLICATE_IGNORED": 2
+      }
+    }
+  },
+  "model_gateway": {
+    "calls": 607,
+    "ok": 600,
+    "skipped_circuit_open": 4,
+    "skipped_load": 0,
+    "errors": {
+      "unavailable": 6,
+      "malformed_output": 1
+    },
+    "rejected": {
+      "unsupported_claim": 1,
+      "malformed_output": 1
+    }
+  },
+  "data_store": {
+    "reads": 4357,
+    "timeouts": 13
+  },
+  "max_queue_ms": 56,
+  "replay_wall_clock_s": 7.67
+}

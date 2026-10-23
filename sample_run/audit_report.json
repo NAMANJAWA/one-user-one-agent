@@ -1,0 +1,40 @@
+{
+  "checked": {
+    "actions": 866,
+    "home_pages": 768,
+    "messages": 98,
+    "decisions": 2790
+  },
+  "problem_count": 0,
+  "problems": {},
+  "checks": [
+    "arm",
+    "decision_link",
+    "page_dialect",
+    "latency",
+    "row_rules",
+    "title_dialect",
+    "availability_incl_withdrawals",
+    "quarantine",
+    "unique_content",
+    "consent",
+    "opt_out",
+    "quiet_hours",
+    "frequency_cap",
+    "message_title",
+    "latest_app_dialect_at_send",
+    "whatsapp_template",
+    "whatsapp_language",
+    "rendered_whatsapp_copy",
+    "push_copy",
+    "invented_price",
+    "offer_language",
+    "resume_copy_truth",
+    "deeplink",
+    "one_page_per_trigger",
+    "one_decision_per_trigger",
+    "no_action_reasons",
+    "evidence_resolves",
+    "no_model_evidence"
+  ]
+}

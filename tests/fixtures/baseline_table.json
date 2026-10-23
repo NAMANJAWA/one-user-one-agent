@@ -1,0 +1,109 @@
+{
+ "G01": {
+  "p": 0.3312,
+  "n": 767,
+  "source": "history anchors before the replay day, n=767",
+  "buckets": {}
+ },
+ "G02": {
+  "p": 0.1967,
+  "n": 183,
+  "source": "pilot holdout arm (no agent), n=183",
+  "buckets": {}
+ },
+ "G03": {
+  "p": 0.1284,
+  "n": 670,
+  "source": "history anchors before the replay day, n=670",
+  "buckets": {
+   "app_open": {
+    "p": 0.303,
+    "n": 670
+   },
+   "play_started": {
+    "p": 0.1284,
+    "n": 670
+   }
+  }
+ },
+ "G04": {
+  "p": 0.2273,
+  "n": 66,
+  "source": "pilot holdout arm (no agent), n=66",
+  "buckets": {}
+ },
+ "G05": {
+  "p": 0.0056,
+  "n": 1073,
+  "source": "pilot holdout arm (no agent), n=1073",
+  "buckets": {}
+ },
+ "G06": {
+  "p": 0.0287,
+  "n": 174,
+  "source": "pilot holdout arm (no agent), n=174",
+  "buckets": {}
+ },
+ "G07": {
+  "p": 0.2667,
+  "n": 11530,
+  "source": "history anchors before the replay day, n=11530",
+  "buckets": {
+   "ep1/14d+": {
+    "p": 0.1341,
+    "n": 1529
+   },
+   "ep1/3-6d": {
+    "p": 0.2513,
+    "n": 3287
+   },
+   "ep1/7-13d": {
+    "p": 0.1796,
+    "n": 3853
+   },
+   "ep2+/14d+": {
+    "p": 0.2846,
+    "n": 123
+   },
+   "ep2+/3-6d": {
+    "p": 0.4893,
+    "n": 1870
+   },
+   "ep2+/7-13d": {
+    "p": 0.4631,
+    "n": 868
+   }
+  }
+ },
+ "G08": {
+  "p": 0.1014,
+  "n": 7942,
+  "source": "history anchors before the replay day, n=7942",
+  "buckets": {
+   "play_days_0-1": {
+    "p": 0.0785,
+    "n": 2090
+   },
+   "play_days_2-4": {
+    "p": 0.1096,
+    "n": 3787
+   },
+   "play_days_5+": {
+    "p": 0.1094,
+    "n": 2065
+   }
+  }
+ },
+ "G09": {
+  "p": 0.6729,
+  "n": 483,
+  "source": "pilot holdout arm (no agent), n=483",
+  "buckets": {}
+ },
+ "G12": {
+  "p": 0.4715,
+  "n": 193,
+  "source": "history anchors before the replay day, n=193",
+  "buckets": {}
+ }
+}

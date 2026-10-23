@@ -1,0 +1,268 @@
+{
+  "command": "main.py run-all --out sample_run --seeds 5 --two-day --strict",
+  "python": "3.13.3",
+  "provider": "mock",
+  "pack": "C:\\Users\\naman\\Desktop\\one_user_one_agent_pack",
+  "pack_fingerprint": {
+    "events": "e6fde6415411124b",
+    "profiles": "ac610156ac026a8a",
+    "catalogue": "31e683a9850e2867",
+    "episodes": "35c2feb85a724721",
+    "goals": "7bc1c35368bfe649",
+    "interventions": "39da2effef783d04",
+    "pricing": "bcbb2d6acfc3586c",
+    "arms": "869fe56cbb3eed81",
+    "triggers": "94b2342bbcbe50b8",
+    "live": "62a518a6dc7b1809",
+    "control": "0e46d883bb0aa5a6",
+    "faults": "b764e9a6cf877a72",
+    "simulator": "1ad2352a3e22a9c8"
+  },
+  "config": {
+    "_comment": "Every threshold the agent uses lives here so it can be reviewed and changed without code edits. See ARCHITECTURE.md for the reasoning behind each value.",
+    "budgets": {
+      "max_model_calls": 8,
+      "max_tool_calls": 20
+    },
+    "latency": {
+      "publish_slo_ms": 60000,
+      "hard_fail_ms": 300000,
+      "page_target_ms": 2500,
+      "store_timeout_ms": 1000,
+      "model_timeout_ms": 1500,
+      "workers": 4,
+      "shed_model_when_queue_ms": 500,
+      "fixed_compute_ms": null
+    },
+    "freshness": {
+      "stale_trigger_s": 600,
+      "profile_max_age_h": 48,
+      "title_expiry_margin_min": 120
+    },
+    "history": {
+      "coverage_start": "2026-08-31T18:30:00Z",
+      "popularity_days": 14
+    },
+    "goals": {
+      "not_actionable_factor": 0.5,
+      "recent_lapse_days": 30,
+      "resume_min_idle_days": 3,
+      "absence_days": 14,
+      "habit_lookback_days": 14,
+      "new_release_days": 30,
+      "value": {
+        "G04": 1.0,
+        "G05": 1.0,
+        "G06": 1.0,
+        "G08": 0.6,
+        "G09": 0.6,
+        "G01": 0.5,
+        "G02": 0.5,
+        "G03": 0.5,
+        "G07": 0.5,
+        "G12": 0.5,
+        "G10": 0.0,
+        "G11": 0.0
+      },
+      "_why_value": "product value of reaching each goal: paid conversion 1.0; keeping a payer engaged 0.6; activation and re-engagement 0.5. Unmeasurable goals 0. A product owner should own these numbers.",
+      "min_expected_value": 0.1,
+      "_why_min_expected_value": "below this the best goal is not worth an intervention (e.g. first paid plan only: value 1.0 x movability 0.02 = 0.02): the agent records it and leaves the default page",
+      "_why_scoring": "score = value x 4p(1-p) x (0.5 if not actionable), p = organic baseline (baseline.py). The old paywall-intent bonus was removed: in the history, paywall viewers converted less (1.6%) than others (2.3%)."
+    },
+    "model": {
+      "provider": "mock",
+      "circuit_breaker_failures": 3,
+      "circuit_breaker_cooldown_s": 120,
+      "mode": "log_only",
+      "_why": "log_only: consulted on every new goal choice that has a real alternative, off the critical path; answers are validated and recorded but never followed. advise: follow validated answers (latency on the page path, shed under load). History: the call rule was first \"within 0.2\", widened to 0.5 after no injected faults fired (tuning toward the test), then replaced by log_only."
+    },
+    "messaging": {
+      "enabled": true,
+      "followup_delay_h": 3,
+      "latest_send_hour_ist": 21,
+      "earliest_send_hour_ist": 9,
+      "blast_radius_max_per_hour": 120,
+      "max_active_days_14d_for_followup": 3,
+      "_why": "a follow-up message is only sent to viewers who are not already habitual (app open on at most 3 of the last 14 days); habitual viewers will see the page on their own",
+      "morning_spread_min": 120,
+      "blast_radius_share_per_hour": 0.25,
+      "_why_blast": "runaway guard: messages whose send_at falls within one hour may not exceed max(blast_radius_max_per_hour, share x distinct viewers reached in the last 24 h); next-morning follow-ups are spread over morning_spread_min",
+      "min_score_for_followup": 0.2,
+      "followup_share": 0.5,
+      "_why_followup": "a follow-up is considered only for goals scoring >= 0.2; then each eligible viewer is assigned send or withhold at random (share 0.5, stable per viewer) so the message effect can be measured"
+    },
+    "home_page": {
+      "rows": 5,
+      "titles_per_row": 10,
+      "genre_rows": 2
+    },
+    "baseline": {
+      "table": null,
+      "_why": "null: fit the organic baseline from the pack (pilot holdout + history). A path: load a saved table instead, e.g. day 1's table updated with day 1's holdout outcomes (oua learn)."
+    },
+    "_goal_multipliers": {}
+  },
+  "history_events_loaded": 140730,
+  "history_duplicates_dropped": 2273,
+  "replay_start": "2026-09-30T18:30:00.000Z",
+  "setup_s": 2.82,
+  "replay_wall_s": 7.67,
+  "decisions": 2790,
+  "actions": 866,
+  "carry_state": null,
+  "learned": null,
+  "quarantined_titles": [
+    "T0002",
+    "T0522"
+  ],
+  "organic_baseline": {
+    "G01": {
+      "p": 0.3312,
+      "n": 767,
+      "source": "history anchors before the replay day, n=767",
+      "buckets": {}
+    },
+    "G02": {
+      "p": 0.1967,
+      "n": 183,
+      "source": "pilot holdout arm (no agent), n=183",
+      "buckets": {}
+    },
+    "G03": {
+      "p": 0.1284,
+      "n": 670,
+      "source": "history anchors before the replay day, n=670",
+      "buckets": {
+        "app_open": {
+          "p": 0.303,
+          "n": 670
+        },
+        "play_started": {
+          "p": 0.1284,
+          "n": 670
+        }
+      }
+    },
+    "G04": {
+      "p": 0.2273,
+      "n": 66,
+      "source": "pilot holdout arm (no agent), n=66",
+      "buckets": {}
+    },
+    "G05": {
+      "p": 0.0056,
+      "n": 1073,
+      "source": "pilot holdout arm (no agent), n=1073",
+      "buckets": {}
+    },
+    "G06": {
+      "p": 0.0287,
+      "n": 174,
+      "source": "pilot holdout arm (no agent), n=174",
+      "buckets": {}
+    },
+    "G07": {
+      "p": 0.2667,
+      "n": 11530,
+      "source": "history anchors before the replay day, n=11530",
+      "buckets": {
+        "ep1/14d+": {
+          "p": 0.1341,
+          "n": 1529
+        },
+        "ep1/3-6d": {
+          "p": 0.2513,
+          "n": 3287
+        },
+        "ep1/7-13d": {
+          "p": 0.1796,
+          "n": 3853
+        },
+        "ep2+/14d+": {
+          "p": 0.2846,
+          "n": 123
+        },
+        "ep2+/3-6d": {
+          "p": 0.4893,
+          "n": 1870
+        },
+        "ep2+/7-13d": {
+          "p": 0.4631,
+          "n": 868
+        }
+      }
+    },
+    "G08": {
+      "p": 0.1014,
+      "n": 7942,
+      "source": "history anchors before the replay day, n=7942",
+      "buckets": {
+        "play_days_0-1": {
+          "p": 0.0785,
+          "n": 2090
+        },
+        "play_days_2-4": {
+          "p": 0.1096,
+          "n": 3787
+        },
+        "play_days_5+": {
+          "p": 0.1094,
+          "n": 2065
+        }
+      }
+    },
+    "G09": {
+      "p": 0.6729,
+      "n": 483,
+      "source": "pilot holdout arm (no agent), n=483",
+      "buckets": {}
+    },
+    "G12": {
+      "p": 0.4715,
+      "n": 193,
+      "source": "history anchors before the replay day, n=193",
+      "buckets": {}
+    }
+  },
+  "baseline_fit_s": 0.75,
+  "goal_corrections": [
+    {
+      "goal_id": "G03",
+      "at": "2026-10-01T08:30:00.000Z",
+      "version": "G03@2026-10-01T08:30:00.000Z",
+      "old": {
+        "event": "app_open",
+        "condition": "on a later IST calendar day within the window"
+      },
+      "new": {
+        "event": "play_started",
+        "condition": "on a later IST calendar day within the window"
+      },
+      "applies_to": "every G03 goal that is still open, including goals opened before this correction",
+      "applies_to_open_goals": true,
+      "ambiguous_scope": false
+    }
+  ],
+  "unmeasurable_goals": {
+    "G10": "success condition names no event (\"engages meaningfully\")",
+    "G11": "success event 'tv_app_open' is not in the platform event schema"
+  },
+  "model_gateway": {
+    "calls": 607,
+    "ok": 600,
+    "skipped_circuit_open": 4,
+    "skipped_load": 0,
+    "errors": {
+      "unavailable": 6,
+      "malformed_output": 1
+    },
+    "rejected": {
+      "unsupported_claim": 1,
+      "malformed_output": 1
+    }
+  },
+  "data_store": {
+    "reads": 4357,
+    "timeouts": 13
+  }
+}
