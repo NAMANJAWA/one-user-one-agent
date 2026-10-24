@@ -5,7 +5,9 @@ whether anything is worth doing (often nothing), publishes a home page in the ap
 follow-up, has every action checked independently, judges the goal from attributable signals, measures the effect
 against the randomised holdout, and carries what it learned into the next day.
 
-A two-minute video walkthrough of the whole loop is in [docs/one-user-one-agent.mp4](docs/one-user-one-agent.mp4).
+A two-minute video walkthrough of the whole loop:
+[watch it in the browser](https://cdn.jsdelivr.net/gh/NAMANJAWA/one-user-one-agent@f075aebd3434ed8f8e617ba215773273e78d56a9/docs/one-user-one-agent.mp4).
+The file itself is [docs/one-user-one-agent.mp4](docs/one-user-one-agent.mp4).
 
 | Sample replay day | Result |
 |---|---|
