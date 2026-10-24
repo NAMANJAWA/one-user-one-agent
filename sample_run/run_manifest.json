@@ -2,7 +2,7 @@
   "command": "main.py run-all --out sample_run --seeds 5 --two-day --strict",
   "python": "3.13.3",
   "provider": "mock",
-  "pack": "C:\\Users\\naman\\Desktop\\one_user_one_agent_pack",
+  "pack": "../one_user_one_agent_pack",
   "pack_fingerprint": {
     "events": "e6fde6415411124b",
     "profiles": "ac610156ac026a8a",

@@ -1,6 +1,7 @@
 # Architecture
 
-Every threshold below lives in `config/agent.json`, with its reason.
+Most thresholds below live in `config/agent.json`, with their reasons. The learning thresholds (`learn.py`) and the
+per-viewer −0.1 goal penalty (`judge.py`) are constants in code.
 
 ```
 triggers + live events + control events, in delivery order
@@ -16,8 +17,9 @@ simulator → judge (versioned rules) → per-viewer learnings
 
 ## Ownership
 
-One state document per viewer (`viewer_state`), written only by the agent: facts with provenance, the single
-active goal, the plan, every decision, action, outcome and learning. The harness serialises each viewer's work, so
+One state document per viewer (`viewer_state`): facts with provenance, the single active goal, the plan, every
+decision, action, outcome and learning. During the replay only the agent writes it; afterwards the judge appends
+outcomes and learnings. The harness serialises each viewer's work, so
 two components can never pursue different goals for one viewer. Holdout viewers have a separate `shadow_goal`,
 computed the same way and never acted on, so goal success can be compared between arms.
 
@@ -36,9 +38,10 @@ computed the same way and never acted on, so goal success can be compared betwee
    goal is first-paid-plan. It has a cost: with the floor off (same code), 73.0% of agent-arm viewers are shown a
    personalised page and plays rise +14.1 pp; with it, 61.8% and +12.5 pp. Pursuing first-paid-plan for them did not
    measurably move it (−0.4 pp vs holdout, 95% upper bound +5.4 pp, n = 109). The goal left alone is still tracked,
-   in both arms, so its prediction is tested and corrected (below). Separately, a page for the same goal still live from an earlier visit is not
-   republished (81 decisions; the viewer still sees it, so this is not a new choice). Forced no-actions (stale
-   offline-buffered opens, unknown or contentless dialect, duplicates) are recorded separately.
+   in both arms, so its prediction is tested and corrected (below). Separately, a page for the same goal still live
+   from an earlier visit is not republished (81 decisions; the viewer still sees it, so this is not a new choice).
+   Forced no-actions (stale offline-buffered opens, unknown or contentless dialect, no eligible measurable goal,
+   duplicates and repeat opens in one session) are recorded separately.
 4. **One goal at a time.** A goal is committed when its first action publishes. Later visits continue it. It is
    re-planned only when the viewer's situation changes: a success signal arrives, a purchase or renewal, a lapse,
    an opt-out, or the app's dialect changes.
@@ -48,8 +51,9 @@ computed the same way and never acted on, so goal success can be compared betwee
    message effect is measured, not assumed. Copy and templates come only from the catalogue and `pricing.json`.
 6. **The model is log-only.** It is consulted on every new goal choice with a real alternative, off the critical
    path. Its answer is validated (it must pick an eligible goal and cite that goal's evidence) and the verdict is
-   recorded, but the agent always acts on the planner's choice. It agreed with the planner on 596 of 599 valid
-   answers on the sample day; logging alone cannot show it adds value (see KNOWN_LIMITATIONS).
+   recorded, but the agent always acts on the planner's choice. On the sample day the mock model agreed with the
+   planner on 596 of 599 valid answers. That is expected, not informative: the mock re-ranks the planner's own
+   scores with small nudges. Logging alone cannot show that a model adds value (see KNOWN_LIMITATIONS).
 
 ## Organic baseline and learning
 
@@ -72,10 +76,12 @@ computed the same way and never acted on, so goal success can be compared betwee
     measured lift alone; it is not checked out of sample.
 - **Per-viewer learning.** An invalid push token or an opt-out suppresses that channel. A goal that failed despite
   exposure scores −0.1 next time.
-- **Across days (`oua two-day`).** An unseen day 2 is replayed from day 1's memory, with and without the learned
-  policy. The difference (`learning_report.md`) is what learning changed: 232 decisions (208 in what the viewer
-  gets), mostly toward G05 and away from G07. Whether they do better is not measured, because the simulator cannot
-  run day 2.
+- **Across days (`oua two-day`).** An unseen day 2 is replayed twice from day 1's memory, with and without
+  `oua learn`'s output. The run without it is not frozen at day 1: with no learned table it re-fits the baseline
+  from history that now includes day 1's simulated outcomes for both arms (G07 26.7% → 17.1%), while the learned
+  table moves G07 to 9.3% from holdout outcomes only. The difference (`learning_report.md`): 232 decisions (208 in
+  what the viewer gets), mostly toward G05 and away from G07. Whether they do better is not measured, because the
+  simulator cannot run day 2.
 
 ## Memory and sources
 

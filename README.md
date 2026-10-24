@@ -5,9 +5,11 @@ whether anything is worth doing (often nothing), publishes a home page in the ap
 follow-up, has every action checked independently, judges the goal from attributable signals, measures the effect
 against the randomised holdout, and carries what it learned into the next day.
 
+A two-minute video walkthrough of the whole loop is in [docs/one-user-one-agent.mp4](docs/one-user-one-agent.mp4).
+
 | Sample replay day | Result |
 |---|---|
-| Decisions | 2,769 triggers; agent arm: 759 decisions published a page, 638 did nothing with a recorded reason. 159 of those were a choice ("not worth an intervention"; all one case, viewers whose only goal is a first paid plan). 81 left an earlier page for the same goal live (the viewer still sees it, so not a new choice). The rest were forced: stale opens, unknown dialect, duplicates |
+| Decisions | 2,769 triggers; agent arm: 759 decisions published a page, 638 did nothing with a recorded reason. 159 of those were a choice ("not worth an intervention"; all one case, viewers whose only goal is a first paid plan). 81 left an earlier page for the same goal live (the viewer still sees it, so not a new choice). The other 398 had no choice to make: 191 stale offline-buffered opens, 79 with an unknown or contentless dialect, 13 with no measurable goal the viewer is eligible for, and 115 duplicates or repeat opens in a session that already got a page |
 | Cost of doing nothing | with the floor switched off (same code), 73.0% of agent-arm viewers were shown a personalised page and plays rose +14.1 pp; with it, 61.8% and +12.5 pp. Pursuing first-paid-plan for those viewers did not measurably move it (−0.4 pp vs holdout, 95% upper bound +5.4 pp, n = 109) |
 | Latency | every page live within 3 s (p95 0.1 s; the model is off the critical path); 0 decisions over 60 s |
 | Safety | 0 problems from the pack's simulator and 0 from our independent audit; 0 actions on holdout viewers |
@@ -21,7 +23,7 @@ Exact numbers are in `sample_run/final_report.md`, `impact_report.md` and `learn
 Python 3.9+, standard library only. The data pack sits next to this folder (or pass `--pack` / set `OUA_PACK`).
 
 ```bash
-python main.py run-all --out sample_run --seeds 5 --two-day   # everything, about 4 minutes
+python main.py run-all --out sample_run --seeds 5 --two-day   # everything, 4-8 minutes
 python -m unittest discover -s tests                           # 75 tests, 1-2 minutes
 python main.py explain U-04744 --run sample_run                 # one viewer, app open to judged outcome
 ```

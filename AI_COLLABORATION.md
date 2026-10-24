@@ -11,7 +11,7 @@ wrong and how that was caught.
 |---|---|
 | Required a full reading of the brief and a plan before any code, and that everything be run and tested rather than claimed | A plan is cheap to change; untested AI code is exactly what the brief says will score poorly |
 | After version 1 passed all its own checks, asked for a bug hunt anyway | Green checks written by the same author share its blind spots. Three fresh-context reviewers found 16 real bugs (below) |
-| Had the finished project reviewed by a separate AI agent, and directed the next round against its findings, plan first | It scored the work 8/10 and named concrete gaps (table below). I prioritised them against my deadline |
+| Had the finished project reviewed by a separate AI agent, and directed the next round against its findings, plan first | It named concrete gaps (table below). I prioritised them against my deadline |
 | **Rejected** Claude's design of calling the model live on close calls (its threshold had been widened from 0.2 to 0.5), and chose log-only mode | The brief says to call models only when it reduces meaningful uncertainty: 607 calls changed 9 decisions with no evidence those were better. It made pages about 11x slower. Widening the threshold after the injected faults did not fire reads as tuning toward the test |
 | **Rejected** the reviewing agent's suggestion to keep calling the model on the pack's fault triggers, after Claude flagged it | The agent would be reading the answer key, and the evaluators' second day has different traps. The general rule stays; the reviewing agent agreed and withdrew it |
 | Kept Claude's proposal to randomise follow-up messages 50/50 | Their value was unknown (4 clicks from 290 messages); an even split measures it fastest |
@@ -25,7 +25,7 @@ wrong and how that was caught.
 | Confidence was not calibrated | Every decision carries `p_without_agent`, checked against the holdout (calibration table, Brier score) | Accurate for G01/G02/G12, wrong for G07/G08/G09, and stated plainly |
 | Learning only ran after the replay and was shown only in a unit test | `oua learn` updates the baseline from holdout outcomes and halves unmovable goals; `oua two-day` replays an unseen day 2 with and without it | Out of sample, the learned baseline predicts better: Brier 0.157 → 0.111, against 0.119 for a constant. 232 day-2 decisions change (208 in what the viewer gets), the same in two fresh runs; both day-2 audits clean. Whether those decisions are better is not measured |
 | The rule correction never fired on the real day | `perturb --correct-goal` aims it at a goal that is open in volume | 249 running G07 goals re-pointed, 0 others, the judge agrees |
-| No git history, a 72 MB sample run, long docs | Commits from this point on; regenerable files are not committed; docs rewritten shorter | — |
+| No git history, a 72 MB sample run, long docs | Committed as one snapshot at the end of the working session, with no reconstructed history; every later change is its own commit. Regenerable files are not committed; docs rewritten shorter | `git log` |
 
 ## What independent reviewers found in Claude's code
 
@@ -50,8 +50,9 @@ Others:
 - Copy checks were bypassed by "Last-chance" and "99 rupees".
 - The injection detector was evadable.
 
-Each has a regression test in `tests/test_review_fixes.py`. All 23 fail on the pre-review code and pass now. On the
-unseen day, the new audit flags 211 breaches in the old code's output; the old audit flagged 0, and the fixed code
+Each has a regression test in `tests/test_review_fixes.py` (23 tests in all). When written, all 23 failed on the
+pre-review code and passed on the fixed code; one has since stopped exercising its check (see KNOWN_LIMITATIONS). On
+the unseen day, the new audit flags 211 breaches in the old code's output; the old audit flagged 0, and the fixed code
 produces 0.
 
 ## Mistakes the AI made and caught itself
